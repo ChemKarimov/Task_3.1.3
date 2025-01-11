@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<h2>User</h2>
+<table>
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>LastName</th>
+        <th>Roles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr var="user" items="${users}">
+    <tr th:each="user : ${user}">
+        <td th:text="${user.name}"></td>
+        <td th:text="${user.lastName}"></td>
+        <td th:text="${#strings.listJoin(user.roles, ', ')}"></td>
+    </tr>
+    </tr>
+    </tbody>
+</table>
+<form th:action="@{/logout}" th:method="POST">
+    <input type="submit" value="Logout"/>
+</form>
+</body>
+</html>
